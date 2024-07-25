@@ -2,7 +2,7 @@ terraform {
   cloud {
     organization = "eganow-devops-org"
     workspaces {
-      name = "eganow-partner-staging-ws"
+      name = "eganow-partner"
     }
   }
 
@@ -23,9 +23,11 @@ terraform {
 provider "linode" {
   token = var.linode_api_token
 }
-provider "kubernetes" {
-  config_path = module.cluster.lke_cluster_kubeconfig_path
-}
+
+# provider "kubernetes" {
+#   fixme
+#   config_path = module.cluster.lke_cluster_kubeconfig_path
+# }
 
 # register cluster module
 module "cluster" {
@@ -35,14 +37,15 @@ module "cluster" {
     linode = linode
   }
 }
+
 #register apis module
-module "apis" {
-  source = "./modules/apis"
-
-  depends_on = [module.cluster]
-
-  providers = {
-    linode     = linode
-    kubernetes = kubernetes
-  }
-}
+# module "apis" {
+#   source = "./modules/apis"
+#
+#   depends_on = [module.cluster]
+#
+#   providers = {
+#     linode     = linode
+#     kubernetes = kubernetes
+#   }
+# }

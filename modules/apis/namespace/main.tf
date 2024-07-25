@@ -10,7 +10,7 @@ terraform {
 }
 
 # create project namespace
-resource "kubernetes_namespace_v1" "ega_partner_namespace" {
+resource "kubernetes_namespace_v1" "egapartnerdevops" {
   metadata {
     name = "egapartnerdevops"
   }

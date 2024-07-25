@@ -13,7 +13,8 @@ terraform {
 # register deployment modules
 module "deployments" {
   source            = "./deployments"
-  project_namespace = module.namespace.project_namespace
+
+  project_namespace = "egapartnerdevops"
   docker_registry   = module.secrets.docker_registry
 
   providers = {
@@ -21,19 +22,10 @@ module "deployments" {
   }
 }
 
-#register namespace module
-module "namespace" {
-  source = "./namespace"
-
-  providers = {
-    kubernetes = kubernetes
-  }
-}
 
 #register secrets module
 module "secrets" {
   source = "./secrets"
-  project_namespace = module.namespace.project_namespace
 
   providers = {
     kubernetes = kubernetes

@@ -35,3 +35,8 @@ variable "cluster_pools" {
     }
   ]
 }
+
+variable "bucket_region" {
+  type = string
+  default = "eu-central"
+}

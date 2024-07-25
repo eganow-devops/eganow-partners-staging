@@ -9,9 +9,3 @@ terraform {
     }
   }
 }
-
-resource "kubernetes_namespace_v1" "ega_partner_devops" {
-  metadata {
-    name = var.project_namespace
-  }
-}

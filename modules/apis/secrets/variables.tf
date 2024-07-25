@@ -20,3 +20,7 @@ variable "dockerconfigjson" {
     }
   }
 }
+
+variable "project_namespace" {
+  default = "egapartnerdevops"
+}
