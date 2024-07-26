@@ -1,5 +1,5 @@
 output "lke_cluster_kubeconfig_path" {
-  value = "" # todo: assign bucket object reference here
+  value = "https://${linode_object_storage_bucket.staging_storage_bucket.hostname}/${linode_object_storage_object.staging_kubeconfig.key}"
 }
 
 output "lke_cluster_id" {

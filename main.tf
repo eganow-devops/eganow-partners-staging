@@ -24,10 +24,10 @@ provider "linode" {
   token = var.linode_api_token
 }
 
-# provider "kubernetes" {
-#   fixme
-#   config_path = module.cluster.lke_cluster_kubeconfig_path
-# }
+provider "kubernetes" {
+
+  config_path = module.cluster.lke_cluster_kubeconfig_path
+}
 
 # register cluster module
 module "cluster" {
@@ -39,13 +39,13 @@ module "cluster" {
 }
 
 #register apis module
-# module "apis" {
-#   source = "./modules/apis"
-#
-#   depends_on = [module.cluster]
-#
-#   providers = {
-#     linode     = linode
-#     kubernetes = kubernetes
-#   }
-# }
+module "apis" {
+  source = "./modules/apis"
+
+  depends_on = [module.cluster]
+
+  providers = {
+    linode     = linode
+    kubernetes = kubernetes
+  }
+}
