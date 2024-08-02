@@ -27,7 +27,7 @@ resource "linode_object_storage_object" "staging_kubeconfig" {
 
 resource "local_file" "kubeconfig" {
   filename = "configs/kubeconfig.yaml"
-  content = base64decode(linode_lke_cluster.eganow_partner_staging.kubeconfig)
+  content = base64decode(linode_lke_cluster.eganow_partners_staging.kubeconfig)
 }
 
 data "linode_object_storage_bucket" "kubeconfig" {

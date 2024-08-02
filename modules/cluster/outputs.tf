@@ -3,5 +3,5 @@ output "lke_cluster_kubeconfig_path" {
 }
 
 output "lke_cluster_id" {
-  value = linode_lke_cluster.eganow_partner_staging.id
+  value = linode_lke_cluster.eganow_partners_staging.id
 }

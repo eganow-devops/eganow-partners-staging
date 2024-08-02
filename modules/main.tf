@@ -11,7 +11,7 @@ terraform {
 }
 
 module "namespace" {
-  source = "./namespace"
+  source = "apis/namespace"
 
   providers = {
     kubernetes = kubernetes

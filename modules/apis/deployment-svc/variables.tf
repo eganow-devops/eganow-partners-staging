@@ -1,4 +1,3 @@
-
 variable "label_scope_dotnet" {
   description = "The scope of the deployment"
   default     = "dotnet"
@@ -13,10 +12,7 @@ variable "docker_registry" {
   description = "The name of the docker registry"
   type        = string
 }
-  variable "project_namespace" {
-    type        = string
-    description = "Namespace where the secret will be created"
+variable "project_namespace" {
+  type        = string
+  description = "Namespace where the secret will be created"
 }
-#variable "app_name" {
- # description = "The name of the application"
-  #type = string

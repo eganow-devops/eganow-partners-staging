@@ -1,4 +1,4 @@
-resource "linode_lke_cluster" "eganow_partner_staging" {
+resource "linode_lke_cluster" "eganow_partners_staging" {
   k8s_version = var.cluster_k8s_version
   label       = var.cluster_label
   region      = var.cluster_region

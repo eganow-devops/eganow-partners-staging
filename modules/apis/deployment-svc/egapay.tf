@@ -36,3 +36,23 @@ resource "kubernetes_deployment_v1" "egapay_voda" {
     }
   }
 }
+resource "kubernetes_service_v1" "egapay_svc" {
+  metadata {
+    name = "egapay-voda-svc"
+    namespace = var.project_namespace
+    labels = {
+      scope = var.label_scope_dotnet
+      environment = var.label_env
+    }
+  }
+  spec {
+    port {
+      name = "https"
+      port = 443
+      target_port = "https"
+    }
+    selector = {
+      app = "egapay-voda"
+    }
+  }
+}
