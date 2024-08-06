@@ -40,3 +40,7 @@ variable "bucket_region" {
   type = string
   default = "eu-central"
 }
+
+variable "vultr_api_key" {
+  type = string
+}

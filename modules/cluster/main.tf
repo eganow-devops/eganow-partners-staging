@@ -1,7 +1,11 @@
 terraform {
   required_providers {
-    linode = {
-      source = "linode/linode"
+    vultr = {
+      source  = "vultr/vultr"
     }
   }
+}
+
+provider "vultr" {
+  api_key = var.vultr_api_key
 }

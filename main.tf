@@ -2,43 +2,28 @@ terraform {
   cloud {
     organization = "eganow-devops-org"
     workspaces {
-      name = "eganow-partners-staging-ws"
+      name = "eganow-partners-uat-ws"
     }
   }
-
   required_providers {
-    linode = {
-      source  = "linode/linode"
-      version = "~> 2.24.0"
-    }
-
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 2.31.0"
+    vultr = {
+      source  = "vultr/vultr"
+      version = "2.21.0"
     }
   }
-}
-
-# configure linode provider
-provider "linode" {
-  token = var.linode_api_token
-}
-
-provider "kubernetes" {
-  config_path = module.cluster.lke_cluster_kubeconfig_path
 }
 
 # register cluster module
 module "cluster" {
-  source = "./modules/cluster"
-
-  providers = {
-    linode = linode
-  }
+  source        = "./modules/cluster"
+  vultr_api_key = var.vultr_api_key
 }
 
-module "ingress" {
-  source = "./modules/ingress"
-
-  project_namespace = "egapartnersdevops"
+module "apis" {
+  source             = "./modules/apis"
+  k8s_ca_certificate = module.cluster.eganow_cluster_kubeconfig_ca_cert
+  k8s_id             = module.cluster.eganow_cluster_id
+  k8s_host           = module.cluster.eganow_cluster_kubeconfig_host
+  k8s_cert           = module.cluster.eganow_cluster_kubeconfig_client_cert
+  k8s_key            = module.cluster.eganow_cluster_kubeconfig_client_key
 }
