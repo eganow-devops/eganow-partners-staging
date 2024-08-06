@@ -3,4 +3,4 @@
 */*.hcl
 */*.tfstate
 **/*.auto.tfvars
-/configs/
+**/*.yaml
