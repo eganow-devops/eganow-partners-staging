@@ -1,9 +1,14 @@
 variable "vultr_api_key" {
   description = "The token for vultr cluster"
-  sensitive = true
+  sensitive   = true
 }
 
+variable "do_token" {
+  description = "The token for digitalocean account"
+  sensitive   = true
+}
 
-#variable "app_name" {
-# description = "The name of the application"
-#type = string
+variable "cluster_issuer_email" {
+  description = "The email of the cluster issuer"
+  type        = string
+}
