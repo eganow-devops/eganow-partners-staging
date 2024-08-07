@@ -12,3 +12,15 @@ variable "cluster_issuer_email" {
   description = "The email of the cluster issuer"
   type        = string
 }
+variable "dockerconfigjson" {
+  type = object({
+    auths = map(object({
+      username = string
+      password = string
+      email    = string
+      auth     = string
+    }))
+  })
+  description = "Docker config JSON"
+  sensitive   = true
+}

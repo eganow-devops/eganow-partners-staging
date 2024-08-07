@@ -28,4 +28,5 @@ module "apis" {
   k8s_client_key       = module.cluster.eganow_cluster_kubeconfig_client_key
   cluster_issuer_email = var.cluster_issuer_email
   do_token             = var.do_token
+  dockerconfigjson = var.dockerconfigjson
 }
