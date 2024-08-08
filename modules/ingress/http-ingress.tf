@@ -3,7 +3,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     name      = "ingress-eganow-http"
     namespace = var.project_namespace
     labels = {
-      scope       = "delivery"
+      scope       = var.label_scope
       environment = var.label_env
     }
     annotations = {
