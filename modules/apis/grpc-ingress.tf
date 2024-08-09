@@ -37,10 +37,49 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
           }
         }
       }
+    }
 
+    rule {
+      host = "eganowcoredev.uat.egadevapi.com"
       http {
         path {
-          path      = "atgh-egapay.uat.egadevapi.com"
+          path = "/"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = "egacore-api-for-developer-api-svc"
+              port {
+                name = "grpc"
+              }
+            }
+          }
+        }
+      }
+    }
+
+    rule {
+      host = "eganowcoredev.uat.egadevapi.com"
+      http {
+        path {
+          path = "/"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = "egacore-api-for-developer-api-svc"
+              port {
+                name = "grpc"
+              }
+            }
+          }
+        }
+      }
+    }
+
+    rule {
+      host = "atgh-egapay.uat.egadevapi.com"
+      http {
+        path {
+          path      = "/"
           path_type = "Prefix"
           backend {
             service {
@@ -52,10 +91,13 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
           }
         }
       }
+    }
 
+    rule {
+      host = "mtngh-egapay.uat.egadevapi.com"
       http {
         path {
-          path = "mtngh-egapay.uat.egadevapi.com"
+          path = "/"
           path_type = "Prefix"
           backend {
             service {
@@ -67,10 +109,13 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
           }
         }
       }
+    }
 
+    rule {
+      host = "merchant.uat.egadevapi.com"
       http {
         path {
-          path = "merchant.uat.egadevapi.com"
+          path = "/"
           path_type = "Prefix"
           backend {
             service {
@@ -82,29 +127,17 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
           }
         }
       }
+    }
 
+    rule {
+      host = "eganowmtngh.com"
       http {
         path {
-          path = "eganowmtngh.com"
+          path = "/"
           path_type = "Prefix"
           backend {
             service {
               name = "egapay-mtn-openapi-svc"
-              port {
-                name = "grpc"
-              }
-            }
-          }
-        }
-      }
-
-      http {
-        path {
-          path = "eganowcoredev.uat.egadevapi.com"
-          path_type = "Prefix"
-          backend {
-            service {
-              name = "egacore-api-for-developer-api-svc"
               port {
                 name = "grpc"
               }
