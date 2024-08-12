@@ -7,7 +7,7 @@
 #     name      = "blupay-voda"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
+#       scope = var.label_scope
 #       env   = var.label_env
 #     }
 #   }
@@ -26,11 +26,11 @@
 #       }
 #       spec {
 #         image_pull_secrets {
-#           name = var.docker_registry
+#           name = var.image_pull_secret
 #         }
 #         container {
 #           name = "blupay-voda"
-#           image = "ganowdevops/telecash-blupay-dotnet-rest-api:latest"
+#           image = "eganowdevops/telecash-blupay-dotnet-rest-api:latest"
 #           image_pull_policy = "Always"
 #           port {
 #             container_port = 80
@@ -45,8 +45,8 @@
 #     name = "blupay-voda-svc"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
-#       environment = var.label_env
+#       scope = var.label_scope
+#       env = var.label_env
 #     }
 #   }
 #   spec {
@@ -70,7 +70,7 @@
 #     name      = "egapay-voda"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
+#       scope = var.label_scope
 #       env   = var.label_env
 #     }
 #   }
@@ -89,7 +89,7 @@
 #       }
 #       spec {
 #         image_pull_secrets {
-#           name = var.docker_registry
+#           name = var.image_pull_secret
 #         }
 #         container {
 #           name = "egapay-voda"
@@ -108,7 +108,7 @@
 #     name = "egapay-voda-svc"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
+#       scope = var.label_scope
 #       environment = var.label_env
 #     }
 #   }
@@ -133,7 +133,7 @@
 #     name      = "pospay-voda"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
+#       scope = var.label_scope
 #       env   = var.label_env
 #     }
 #   }
@@ -152,7 +152,7 @@
 #       }
 #       spec {
 #         image_pull_secrets {
-#           name = var.docker_registry
+#           name = var.image_pull_secret
 #         }
 #         container {
 #           name = "pospay-voda"
@@ -171,7 +171,7 @@
 #     name = "pospay-voda-svc"
 #     namespace = var.project_namespace
 #     labels = {
-#       scope = var.label_scope_dotnet
+#       scope = var.label_scope
 #       environment = var.label_env
 #     }
 #   }

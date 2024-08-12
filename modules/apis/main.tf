@@ -66,7 +66,6 @@ module "cert_manager" {
     kubectl    = kubectl
     helm       = helm
   }
-
 }
 
 

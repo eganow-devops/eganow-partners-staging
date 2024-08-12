@@ -24,3 +24,5 @@ variable "dockerconfigjson" {
   description = "Docker config JSON"
   sensitive   = true
 }
+
+
