@@ -16,13 +16,13 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
   }
   spec {
     tls {
-      hosts = ["*.uat.egadevapi.com"]
+      hosts = ["*.dev.egadevapi.com"]
       secret_name = "ingress-eganow-grpc-tls"
     }
     ingress_class_name = "nginx"
 
     rule {
-      host = "ghipss-egapay.uat.egadevapi.com"
+      host = "ghipss-egapay.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -40,7 +40,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
     }
 
     rule {
-      host = "eganowcoredev.uat.egadevapi.com"
+      host = "eganowcoredev.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -58,7 +58,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
     }
 
     rule {
-      host = "eganowcoredev.uat.egadevapi.com"
+      host = "eganowcoredev.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -76,7 +76,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
     }
 
     rule {
-      host = "atgh-egapay.uat.egadevapi.com"
+      host = "atgh-egapay.dev.egadevapi.com"
       http {
         path {
           path      = "/"
@@ -94,7 +94,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
     }
 
     rule {
-      host = "mtngh-egapay.uat.egadevapi.com"
+      host = "mtngh-egapay.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -112,7 +112,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
     }
 
     rule {
-      host = "merchant.uat.egadevapi.com"
+      host = "merchant.dev.egadevapi.com"
       http {
         path {
           path = "/"

@@ -17,12 +17,12 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
   }
   spec {
     tls {
-      hosts = ["*.uat.egadevapi.com"]
+      hosts = ["*.dev.egadevapi.com"]
       secret_name = "ingress-eganow-http-tls"
     }
     ingress_class_name = "nginx"
     rule {
-      host = "voda-egapay.uat.egadevapi.com"
+      host = "voda-egapay.dev.egadevapi.com"
       http {
         path {
           path      = "/api/v1"
@@ -40,14 +40,14 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "dev-credentials.uat.egadevapi.com"
+      host = "dev-credentials.dev.egadevapi.com"
       http {
         path {
           path      = "/api/v1"
           path_type = "Prefix"
           backend {
             service {
-              name = "uat-onepassword-connect-svc"
+              name = "dev-onepassword-connect-svc"
               port {
                 name = "uat-capi"
               }
@@ -58,7 +58,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "voda-blupay.uat.egadevapi.com"
+      host = "voda-blupay.dev.egadevapi.com"
       http {
         path {
           path      = "/api/v1"
@@ -76,7 +76,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "voda-pospay.uat.egadevapi.com"
+      host = "voda-pospay.dev.egadevapi.com"
       http {
         path {
           path      = "/api/v1"
@@ -94,7 +94,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "mtngh-egapay.uat.egadevapi"
+      host = "mtngh-egapay.dev.egadevapi"
       http {
         path {
           path = "/api/v1"
@@ -112,7 +112,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "merchant.uat.egadevapi.com"
+      host = "merchant.dev.egadevapi.com"
       http {
         path {
           path = "/api/v1"
@@ -130,7 +130,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "atgh-egapay.uat.egadevapi.com"
+      host = "atgh-egapay.dev.egadevapi.com"
       http {
         path {
           path = "/api/v1"
@@ -148,7 +148,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "eganow-merchant-dashboard.uat.egadevapi.com"
+      host = "eganow-merchant-dashboard.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -166,7 +166,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
     }
 
     rule {
-      host = "eganow-merchant.uat.egadevapi.com"
+      host = "eganow-merchant.dev.egadevapi.com"
       http {
         path {
           path = "/"
@@ -183,7 +183,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
       }
     }
     rule {
-      host = "ghipss-egapay.uat.egadevapi.com"
+      host = "ghipss-egapay.dev.egadevapi.com"
       http {
         path {
           path = "/api/v1"
