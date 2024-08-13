@@ -8,9 +8,9 @@ resource "kubernetes_secret_v1" "do_dns_token" {
     token = var.do_token
   }
 }
-resource "kubernetes_secret_v1" "regcred" {
+resource "kubernetes_secret_v1" "dockerconfigjson" {
   metadata {
-    name      = "regcred"
+    name      = "dockerconfigjson"
     namespace = var.project_namespace
   }
   type = "kubernetes.io/dockerconfigjson"

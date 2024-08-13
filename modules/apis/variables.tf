@@ -59,3 +59,17 @@ variable "dockerconfigjson" {
   description = "Docker config JSON"
   sensitive   = true
 }
+variable "label_scope" {
+  description = "The scope of the deployment"
+  default     = "delivery"
+}
+
+variable "label_env" {
+  description = "The environment of the resource"
+  default     = "staging"
+}
+
+variable "image_pull_secret" {
+  description = "The image pull secret"
+  default = "dockerconfigjson"
+}
