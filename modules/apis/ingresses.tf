@@ -200,6 +200,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
         }
       }
     }
+
     rule {
       host = "ghipss-egapay.dev.egadevapi.com"
       http {

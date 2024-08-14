@@ -1,7 +1,11 @@
+#################################
+# CLUSTER VARIABLES             #
+#################################
+
 variable "cluster_k8s_version" {
   description = "The Kubernetes version for the cluster"
   type        = string
-  default     = "1.30"
+  default     = "v1.30.0+1"
 }
 
 variable "cluster_label" {
@@ -13,7 +17,7 @@ variable "cluster_label" {
 variable "cluster_region" {
   description = "The region for the cluster"
   type        = string
-  default     = "eu-west"
+  default     = "ewr"
 }
 
 variable "cluster_tags" {
@@ -21,6 +25,31 @@ variable "cluster_tags" {
   type = list(string)
   default = ["eganow-partner-staging", "terraform:linode"]
 }
+
+variable "cluster_node_quantity" {
+  description = "The number of nodes in the cluster"
+  type = number
+  default = "1"
+}
+
+variable "cluster_node_autoscale_min_count" {
+  description = "The minimum count for autoscaling nodes"
+  type = number
+  default = "1"
+}
+
+variable "cluster_node_autoscale_max_count" {
+  description = "The maximum count for autoscaling nodes"
+  type = number
+  default = "3"
+
+}
+
+variable "cluster_node_pool_plan" {
+  description = "The size/spec of the node pool"
+  default = "vc2-1c-2gb"
+}
+
 
 variable "cluster_pools" {
   description = "The Node Pool specifications for the Kubernetes cluster. (required)"
@@ -36,11 +65,58 @@ variable "cluster_pools" {
   ]
 }
 
-variable "bucket_region" {
-  type = string
-  default = "eu-central"
-}
-
 variable "vultr_api_key" {
   type = string
+}
+
+
+#################################
+# FIREWALL VARIABLES            #
+#################################
+variable "ega_subnet_1" {
+  type = string
+  description = "The source address for subnet1 accessing the cluster"
+  default = "216.128.0.2"
+}
+
+variable "ega_subnet_2" {
+  type = string
+  description = "The source address for subnet2 accessing the cluster"
+  default = "197.251.253.48"
+}
+
+variable "ega_subnet_size" {
+  type = string
+  description = "The number of ips allowed with the subnet"
+  default = "32"
+}
+
+variable "firewall_ip_type" {
+  type = string
+  description = "The ip type for the firewall"
+  default = "v4"
+}
+
+variable "firewall_ssh_port" {
+  type = string
+  description = "The ssh port to the cluster"
+  default = "22"
+}
+
+variable "firewall_http_port" {
+  type = string
+  description = "The http port to the cluster"
+  default = "443"
+}
+
+variable "firewall_smtp_port" {
+  type = string
+  description = "The smtp port to the cluster"
+  default = "25"
+}
+
+variable "firewall_smtps_port" {
+  type = string
+  description = "The smtps port to the cluster"
+  default = "587"
 }
