@@ -73,3 +73,13 @@ variable "image_pull_secret" {
   description = "The image pull secret"
   default = "dockerconfigjson"
 }
+
+variable "partners_domain_name" {
+  description = "The domain name for the project"
+  default = "dev.egadevapi.com"
+}
+
+variable "ingress_namespace" {
+  description = "The namespace for ingresses"
+  default = "ns-partners-ingress"
+}

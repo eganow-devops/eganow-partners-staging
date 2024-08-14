@@ -3,13 +3,19 @@ resource "helm_release" "nginx_ingress" {
   name       = "partners-nginx"
   repository = "https://kubernetes.github.io/ingress-nginx"
   version    = var.nginx_ingress_version
-  namespace  = "ns-partners-ingress"
+  namespace  = var.ingress_namespace
 
   create_namespace = true
   cleanup_on_fail  = true
   set {
     name  = "service.type"
     value = "LoadBalancer"
+  }
+}
+data "kubernetes_service_v1" "ingress_lb" {
+  metadata {
+    name      = "${helm_release.nginx_ingress.name}-${helm_release.nginx_ingress.chart}-controller"
+    namespace = var.ingress_namespace
   }
 }
 
