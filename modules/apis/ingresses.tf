@@ -62,7 +62,7 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
       host = "${digitalocean_record.onepassword_vault.name}.${var.partners_domain_name}"
       http {
         path {
-          path      = "/api/v1"
+          path      = "/v1"
           path_type = "Prefix"
           backend {
             service {
