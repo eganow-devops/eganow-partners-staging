@@ -1,11 +1,24 @@
 resource "kubernetes_secret_v1" "do_dns_token" {
   metadata {
     name      = "digitalocean-dns"
-    namespace = var.cluster_issuer_name
+    namespace = module.cert_manager.namespace
   }
 
   data = {
     token = var.do_token
+  }
+}
+
+
+resource "kubernetes_secret_v1" "onepassword_connect" {
+  metadata {
+    name      = "onepassword-connect"
+    namespace = var.project_namespace
+  }
+
+  data = {
+    "onepassword-credentials" : base64encode(jsonencode(var.onepassword_credentials_json))
+    token = var.onepassword_token
   }
 }
 
@@ -21,14 +34,3 @@ resource "kubernetes_secret_v1" "dockerconfigjson" {
   }
 }
 
-# resource "kubernetes_secret_v1" "onepassword_connect" {
-#   metadata {
-#     name      = "onepassword-connect"
-#     namespace = var.project_namespace
-#   }
-#
-#   data = {
-#     "onepassword-credentials" : base64encode(jsonencode(var.onepassword_credentials_json))
-#     token = var.onepassword_token
-#   }
-# }

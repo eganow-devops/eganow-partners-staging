@@ -5,12 +5,16 @@ data "kubernetes_service_v1" "ingress_lb" {
   }
 }
 
-# data "kubernetes_service_v1" "onepassword" {
+data "kubernetes_service_v1" "onepassword" {
+  metadata {
+    name      = helm_release.onepassword.name
+    namespace = var.project_namespace
+  }
+}
+
+# data "kubernetes_service_v1" "ingress_eganow_http" {
 #   metadata {
-#     name      = helm_release.onepassword.name
+#     name = kubernetes_service_v1.egapay_svc.dynamic
 #     namespace = var.project_namespace
 #   }
 # }
-
-
-
