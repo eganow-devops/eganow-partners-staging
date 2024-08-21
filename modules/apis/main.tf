@@ -12,6 +12,10 @@ terraform {
       source  = "alekc/kubectl"
       version = "~> 2.0.4"
     }
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "~>2.40.0"
+    }
   }
 }
 
@@ -37,6 +41,10 @@ provider "helm" {
     client_key             = var.k8s_client_key
     host                   = var.k8s_host
   }
+}
+
+provider "digitalocean" {
+  token = var.do_token
 }
 
 module "cert_manager" {
