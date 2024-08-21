@@ -12,9 +12,27 @@ data "kubernetes_service_v1" "onepassword" {
   }
 }
 
-# data "kubernetes_service_v1" "ingress_eganow_http" {
-#   metadata {
-#     name = kubernetes_service_v1.egapay_svc.dynamic
-#     namespace = var.project_namespace
-#   }
-# }
+##############################################
+# SERVICE: MTNGH MAD-API NAME ENQUIRY        #
+##############################################
+resource "kubernetes_service_v1" "mtn_gh_mad_api_name_enquiry" {
+  metadata {
+    name      = "${kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.metadata.0.name}-svc"
+    namespace = var.project_namespace
+  }
+  spec {
+    selector = {
+      app = kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.metadata.0.name
+    }
+    port {
+      name        = "http"
+      port        = kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.spec.0.template.0.spec.0.container.0.port.0.container_port
+      target_port = kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.spec.0.template.0.spec.0.container.0.port.0.container_port
+    }
+    port {
+      name        = "grpc"
+      port        = kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.spec.0.template.0.spec.0.container.0.port.0.container_port
+      target_port = kubernetes_deployment_v1.mtn_gh_mad_api_name_enquiry.spec.0.template.0.spec.0.container.0.port.0.container_port
+    }
+  }
+}
