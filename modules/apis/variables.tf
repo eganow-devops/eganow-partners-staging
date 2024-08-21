@@ -142,3 +142,16 @@ variable "secure_port_name" {
   type        = string
   default     = "https"
 }
+
+variable "max_pod_replicas" {
+  description = "The maximum number of pods for autoscaling"
+  type        = number
+  default = 3
+
+}
+
+variable "min_pod_replicas" {
+  description = "The minimum number of pods for autoscaling"
+  type        = number
+  default = 1
+}
