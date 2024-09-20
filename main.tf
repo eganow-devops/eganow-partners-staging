@@ -32,4 +32,5 @@ module "apis" {
   partners_domain_name         = var.partners_domain_name
   onepassword_token            = var.onepassword_token
   onepassword_credentials_json = var.onepassword_credentials_json
+
 }

@@ -81,47 +81,49 @@ resource "kubernetes_ingress_v1" "ingress_eganow_http" {
 
 
 
-################################
-# gRPC INGRESS                 #
-################################
-# resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
-#   metadata {
-#     name      = "ingress-eganow-grpc"
-#     namespace = var.project_namespace
-#     labels = {
-#       scope = var.label_scope
-#       env   = var.label_env
-#     }
-#     annotations = {
-#       "nginx.ingress.kubernetes.io/ssl-redirect"       = "true"
-#       "nginx.ingress.kubernetes.io/force-ssl-redirect" = "true"
-#       "nginx.ingress.kubernetes.io/backend-protocol"   = "GRPC"
-#       "cert-manager.io/cluster-issuer"                 = var.cluster_issuer_name
-#       "kubernetes.io/ingress.class"                    = "nginx"
-#     }
-#   }
-#
-#   spec {
-#     tls {
-#       hosts = ["*.${var.partners_domain_name}"]
-#       secret_name = "ingress-eganow-grpc-tls"
-#     }
-#     ingress_class_name = "nginx"
+###############################
+#gRPC INGRESS                  #
+###############################
+resource "kubernetes_ingress_v1" "ingress_eganow_grpc" {
+  metadata {
+    name      = "ingress-eganow-grpc"
+    namespace = var.project_namespace
+    labels = {
+      scope = var.label_scope
+      env   = var.label_env
+    }
+    annotations = {
+      "nginx.ingress.kubernetes.io/ssl-redirect"       = "true"
+      "nginx.ingress.kubernetes.io/force-ssl-redirect" = "true"
+      "nginx.ingress.kubernetes.io/backend-protocol"   = "GRPC"
+      "cert-manager.io/cluster-issuer"                 = var.cluster_issuer_name
+      "kubernetes.io/ingress.class"                    = "nginx"
+    }
+  }
 
-#     rule {
-#       host = "${digitalocean_record.egapay_mtn.name}.${var.partners_domain_name}"
-#       http {
-#         path {
-#           path      = "/"
-#           path_type = "Prefix"
-#           backend {
-#             service {
-#               name = kubernetes_service_v1.egapay_svc.metadata.0.name
-#               port {
-#                 name = "grpc"
-#               }
-#             }
-#           }
-#         }
-#       }
-#     }
+  spec {
+    tls {
+      hosts = ["*.${var.partners_domain_name}"]
+      secret_name = "ingress-eganow-grpc-tls"
+    }
+    ingress_class_name = "nginx"
+
+    rule {
+      host = "${digitalocean_record.egapay_mtn.name}.${var.partners_domain_name}"
+      http {
+        path {
+          path      = "/"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = kubernetes_service_v1.egapay_svc.metadata.0.name
+              port {
+                name = "grpc"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
