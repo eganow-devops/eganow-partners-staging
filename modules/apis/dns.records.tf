@@ -1,26 +1,26 @@
-resource "digitalocean_domain" "partners" {
-  name       = var.partners_domain_name
-}
-
-resource "digitalocean_record" "egapay_mtn" {
-  domain = digitalocean_domain.partners.name
-  name   = "mtngh-egapay"
-  type   = "A"
-  value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-}
-resource "digitalocean_record" "eganow_merchant" {
-  domain = digitalocean_domain.partners.name
-  name   = "merchant"
-  type   = "A"
-  value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-}
-
-resource "digitalocean_record" "onepassword_vault" {
-  domain = digitalocean_domain.partners.name
-  name   = "vault"
-  type   = "A"
-  value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-}
+# resource "digitalocean_domain" "partners" {
+#   name       = var.domain_name
+# }
+#
+# resource "digitalocean_record" "egapay_mtn" {
+#   domain = digitalocean_domain.partners.name
+#   name   = "mtngh-egapay"
+#   type   = "A"
+#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+# }
+# resource "digitalocean_record" "eganow_merchant" {
+#   domain = digitalocean_domain.partners.name
+#   name   = "merchant"
+#   type   = "A"
+#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+# }
+#
+# resource "digitalocean_record" "onepassword_vault" {
+#   domain = digitalocean_domain.partners.name
+#   name   = "vault"
+#   type   = "A"
+#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+# }
 
 
 

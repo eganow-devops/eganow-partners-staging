@@ -2,26 +2,8 @@
 #CLUSTER                            #
 #####################################
 
-variable "k8s_ca_certificate" {
-  description = " The ca certificate from the cluster"
-  type        = string
-}
-
-variable "k8s_id" {
-  description = "The id from the cluster"
-  type        = string
-}
-
-variable "k8s_client_key" {
-  type = string
-}
-
-variable "k8s_client_cert" {
-  type = string
-}
-
-variable "k8s_host" {
-  description = "The host from the k8s cluster"
+variable "k8s_kubeconfig" {
+  description = " The kubeconfig file from the cluster"
   type        = string
 }
 variable "cluster_issuer_email" {
@@ -43,11 +25,6 @@ variable "cluster_issuer_private_key_secret_name" {
 #####################################
 #SECRETS                            #
 #####################################
-
-variable "do_token" {
-  description = "The token for digitalocean account"
-  sensitive   = true
-}
 
 variable "onepassword_token" {
   description = "The token for vault connection"
@@ -121,9 +98,8 @@ variable "label_env" {
   default     = "staging"
 }
 
-variable "partners_domain_name" {
+variable "domain_name" {
   description = "The domain name for the project"
-  default     = "dev.egadevapi.com"
 }
 
 variable "ingress_namespace" {
@@ -141,4 +117,28 @@ variable "secure_port_name" {
   description = "The port for secure service"
   type        = string
   default     = "https"
+}
+variable "cloudflare_account_id" {
+  description = "The ID for the cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_zone_id" {
+  description = "The ID for the cloudflare zone"
+  type        = string
+}
+
+variable "cloudflare_api_key" {
+  description = "The API key for cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_global_api_key" {
+  description = "The API key for cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_project_name" {
+  description = "The name of the cloudflare project"
+  type        = string
 }

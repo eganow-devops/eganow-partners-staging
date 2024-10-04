@@ -1,10 +1,5 @@
-variable "vultr_api_key" {
+variable "linode_api_key" {
   description = "The token for vultr cluster"
-  sensitive   = true
-}
-
-variable "do_token" {
-  description = "The token for digitalocean account"
   sensitive   = true
 }
 
@@ -58,7 +53,30 @@ variable "onepassword_token" {
   sensitive   = true
 }
 
-variable "partners_domain_name" {
+variable "domain_name" {
   description = "The domain name for the project"
-  default     = "dev.egadevapi.com"
+}
+variable "cloudflare_account_id" {
+  description = "The ID for the cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_zone_id" {
+  description = "The ID for the cloudflare zone"
+  type        = string
+}
+
+variable "cloudflare_api_key" {
+  description = "The API key for cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_global_api_key" {
+  description = "The API key for cloudflare account"
+  type        = string
+}
+
+variable "cloudflare_project_name" {
+  description = "The name of the cloudflare project"
+  type        = string
 }

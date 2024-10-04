@@ -5,7 +5,7 @@
 variable "cluster_k8s_version" {
   description = "The Kubernetes version for the cluster"
   type        = string
-  default     = "v1.30.0+1"
+  default     = "1.31"
 }
 
 variable "cluster_label" {
@@ -17,7 +17,7 @@ variable "cluster_label" {
 variable "cluster_region" {
   description = "The region for the cluster"
   type        = string
-  default     = "ewr"
+  default     = "gb-lon"
 }
 
 variable "cluster_tags" {
@@ -26,11 +26,6 @@ variable "cluster_tags" {
   default = ["eganow-partner-staging", "terraform:linode"]
 }
 
-variable "cluster_node_quantity" {
-  description = "The number of nodes in the cluster"
-  type = number
-  default = "1"
-}
 
 variable "cluster_node_autoscale_min_count" {
   description = "The minimum count for autoscaling nodes"
@@ -45,11 +40,6 @@ variable "cluster_node_autoscale_max_count" {
 
 }
 
-variable "cluster_node_pool_plan" {
-  description = "The size/spec of the node pool"
-  default = "vc2-1c-2gb"
-}
-
 
 variable "cluster_pools" {
   description = "The Node Pool specifications for the Kubernetes cluster. (required)"
@@ -59,13 +49,13 @@ variable "cluster_pools" {
   }))
   default = [
     {
-      type  = "g6-standard-1"
+      type  = "g6-standard-2"
       count = 3
     }
   ]
 }
 
-variable "vultr_api_key" {
+variable "linode_api_key" {
   type = string
 }
 
