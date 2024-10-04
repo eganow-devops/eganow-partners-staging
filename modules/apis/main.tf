@@ -13,38 +13,32 @@ terraform {
       version = "~> 2.0.4"
     }
     digitalocean = {
-      source = "digitalocean/digitalocean"
-      version = "~>2.40.0"
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.39.2"
     }
-  }
-}
-
-provider "kubernetes" {
-  cluster_ca_certificate = var.k8s_ca_certificate
-  client_certificate     = var.k8s_client_cert
-  client_key             = var.k8s_client_key
-  host                   = var.k8s_host
-}
-
-provider "kubectl" {
-  cluster_ca_certificate = var.k8s_ca_certificate
-  client_certificate     = var.k8s_client_cert
-  client_key             = var.k8s_client_key
-  host                   = var.k8s_host
-  load_config_file       = false
-}
-
-provider "helm" {
-  kubernetes {
-    cluster_ca_certificate = var.k8s_ca_certificate
-    client_certificate     = var.k8s_client_cert
-    client_key             = var.k8s_client_key
-    host                   = var.k8s_host
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.5.1"
+    }
   }
 }
 
 provider "digitalocean" {
   token = var.do_token
+}
+
+provider "kubernetes" {
+  config_path = local_file.kubeconfig.filename
+}
+
+provider "kubectl" {
+  config_path = local_file.kubeconfig.filename
+}
+
+provider "helm" {
+  kubernetes {
+    config_path = local_file.kubeconfig.filename
+  }
 }
 
 module "cert_manager" {
@@ -74,6 +68,5 @@ module "cert_manager" {
     kubectl    = kubectl
     helm       = helm
   }
+
 }
-
-

@@ -1,14 +1,16 @@
-resource "vultr_kubernetes" "k8s" {
-  region  = var.cluster_region
-  label   = var.cluster_label
-  version = var.cluster_k8s_version
+resource "linode_lke_cluster" "staging_cluster" {
+  label       = var.cluster_label
+  k8s_version = var.cluster_k8s_version
+  region      = var.cluster_region
+  tags        = var.cluster_tags
 
-  node_pools {
-    node_quantity = var.cluster_node_quantity
-    plan          = var.cluster_node_pool_plan
-    label         = "${var.cluster_label}-pool"
-    auto_scaler   = true
-    min_nodes     = var.cluster_node_autoscale_min_count
-    max_nodes     = var.cluster_node_autoscale_max_count
+  pool {
+    type  = "g6-standard-2"
+
+    autoscaler {
+      min = 1
+      max = 3
+    }
+    count = 1
   }
 }

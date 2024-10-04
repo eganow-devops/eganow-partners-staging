@@ -44,8 +44,8 @@ variable "cluster_issuer_private_key_secret_name" {
 #SECRETS                            #
 #####################################
 
-variable "do_token" {
-  description = "The token for digitalocean account"
+variable "cloudflare_token" {
+  description = "The token for cloudflare"
   sensitive   = true
 }
 

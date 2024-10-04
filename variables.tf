@@ -1,9 +1,9 @@
-variable "vultr_api_key" {
+variable "linode_api_key" {
   description = "The token for vultr cluster"
   sensitive   = true
 }
 
-variable "do_token" {
+variable "cloudflare_token" {
   description = "The token for digitalocean account"
   sensitive   = true
 }
