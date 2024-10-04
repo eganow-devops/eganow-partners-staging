@@ -9,21 +9,21 @@ terraform {
 
 # register cluster module
 module "cluster" {
-  source         = "./modules/cluster"
+  source        = "./modules/cluster"
   linode_api_key = var.linode_api_key
 }
 
-module "apis" {
-  source               = "./modules/apis"
-  k8s_kubeconfig       = module.cluster.eganow_cluster_kubeconfig
-  cluster_issuer_email = var.cluster_issuer_email
-  dockerconfigjson = var.dockerconfigjson
-  onepassword_token            = var.onepassword_token
-  onepassword_credentials_json = var.onepassword_credentials_json
-  domain_name               = var.domain_name
-  cloudflare_account_id     = var.cloudflare_account_id
-  cloudflare_zone_id        = var.cloudflare_zone_id
-  cloudflare_api_key        = var.cloudflare_api_key
-  cloudflare_project_name   = var.cloudflare_project_name
-  cloudflare_global_api_key = var.cloudflare_global_api_key
-}
+# module "apis" {
+#   source                       = "./modules/apis"
+#   k8s_ca_certificate           = module.cluster.eganow_cluster_kubeconfig_ca_cert
+#   k8s_id                       = module.cluster.eganow_cluster_id
+#   k8s_host                     = module.cluster.eganow_cluster_kubeconfig_host
+#   k8s_client_cert              = module.cluster.eganow_cluster_kubeconfig_client_cert
+#   k8s_client_key               = module.cluster.eganow_cluster_kubeconfig_client_key
+#   cluster_issuer_email         = var.cluster_issuer_email
+#   cloudflare_token             = var.cloudflare_token
+#   dockerconfigjson             = var.dockerconfigjson
+#   partners_domain_name         = var.partners_domain_name
+#   onepassword_token            = var.onepassword_token
+#   onepassword_credentials_json = var.onepassword_credentials_json
+# }

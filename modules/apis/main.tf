@@ -12,9 +12,9 @@ terraform {
       source  = "alekc/kubectl"
       version = "~> 2.0.4"
     }
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-      version = "~> 4.0"
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.39.2"
     }
     local = {
       source  = "hashicorp/local"
@@ -22,8 +22,9 @@ terraform {
     }
   }
 }
-provider "cloudflare" {
-  api_token = var.cloudflare_api_token
+
+provider "digitalocean" {
+  token = var.do_token
 }
 
 provider "kubernetes" {
@@ -52,18 +53,12 @@ module "cert_manager" {
   solvers = [
     {
       dns01 = {
-        cloudflare = {
-          email = var.cluster_issuer_email
-          apiKeySecretRef = {
-            name = kubernetes_secret_v1.cloudflare_dns_token.metadata.0.name
+        digitalocean = {
+          tokenSecretRef = {
+            name = kubernetes_secret_v1.do_dns_token.metadata.0.name
             key  = "token"
           }
         }
-      },
-      selector = {
-        dnsZones = [
-          var.domain_name
-        ]
       }
     }
   ]
@@ -73,4 +68,5 @@ module "cert_manager" {
     kubectl    = kubectl
     helm       = helm
   }
+
 }
