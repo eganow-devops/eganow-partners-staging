@@ -1,4 +1,4 @@
-resource "linode_lke_cluster" "staging_cluster" {
+resource "linode_lke_cluster" "partners_cluster" {
   label       = var.cluster_label
   k8s_version = var.cluster_k8s_version
   region      = var.cluster_region
