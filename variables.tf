@@ -77,3 +77,8 @@ variable "cloudflare_project_name" {
   description = "The name of the cloudflare project"
   type        = string
 }
+variable "do_token" {
+  description = "Digital ocean token"
+  type = string
+  sensitive = true
+}

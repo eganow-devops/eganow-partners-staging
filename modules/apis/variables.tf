@@ -34,7 +34,7 @@ variable "onepassword_token" {
 variable "project_namespace" {
   type        = string
   description = "project default namespace"
-  default     = "ns-eganow-staging"
+  default     = "eganow-partners-ns"
 }
 
 variable "dockerconfigjson" {
@@ -137,4 +137,25 @@ variable "cloudflare_global_api_key" {
 variable "cloudflare_project_name" {
   description = "The name of the cloudflare project"
   type        = string
+}
+variable "do_token" {
+  description = "Digital ocean token"
+  type = string
+  sensitive = true
+}
+variable "min_pod_replicas" {
+  description = "The minimum number of replicas for the deployment"
+  type        = number
+  default     = 1
+}
+
+variable "max_pod_replicas" {
+  description = "The maximum number of replicas for the deployment"
+  type        = number
+  default     = 3
+}
+variable "cloudflare_dns_ttl" {
+  description = "The TTL of the zone to facilitate DNS records."
+  type        = number
+  default     = 3600
 }

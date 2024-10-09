@@ -16,6 +16,10 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "~> 4.0"
     }
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.39.2"
+    }
     local = {
       source  = "hashicorp/local"
       version = "~> 2.5.1"
@@ -39,6 +43,9 @@ provider "helm" {
   kubernetes {
     config_path = local_file.kubeconfig.filename
   }
+}
+provider "digitalocean" {
+    token = var.do_token
 }
 
 module "cert_manager" {

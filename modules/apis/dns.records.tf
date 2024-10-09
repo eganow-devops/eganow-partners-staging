@@ -1,45 +1,43 @@
-# resource "digitalocean_domain" "partners" {
-#   name       = var.domain_name
-# }
-#
-# resource "digitalocean_record" "egapay_mtn" {
-#   domain = digitalocean_domain.partners.name
-#   name   = "mtngh-egapay"
-#   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-# }
-# resource "digitalocean_record" "eganow_merchant" {
-#   domain = digitalocean_domain.partners.name
-#   name   = "merchant"
-#   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-# }
-#
-# resource "digitalocean_record" "onepassword_vault" {
-#   domain = digitalocean_domain.partners.name
-#   name   = "vault"
-#   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
-# }
-# resource "digitalocean_record" "atgh_egapay_record" {
-#   domain = digitalocean_domain.partners.name
-#   name   = "atgh-egapay"
-#   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer
-# }
 
-# resource "digitalocean_record" "ghipss_egapay_record" {
-#   domain = digitalocean_domain.partners.name
-#   name   = "ghipss-egapay"
-#   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer
-# }
+resource "cloudflare_record" "onepassword_vault" {
+  zone_id = var.cloudflare_zone_id
+  name   = "vault"
+  type   = "A"
+  content = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+  ttl = var.cloudflare_dns_ttl
+  proxied = false
+}
+
+resource "cloudflare_record" "mtngh_mad_api_egapay" {
+  zone_id = var.cloudflare_zone_id
+  name   = "mtngh-egapay"
+  type   = "A"
+  content  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+  ttl = var.cloudflare_dns_ttl
+  proxied = false
+}
+resource "cloudflare_record" "mtngh_mad_api_pospay" {
+  zone_id = var.cloudflare_zone_id
+  name   = "mtngh-pospay"
+  type   = "A"
+  content  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+  ttl = var.cloudflare_dns_ttl
+  proxied = false
+}
+
+resource "cloudflare_record" "ghipss_api_name_enquiry" {
+  zone_id = var.cloudflare_zone_id
+  name   = "ghipss"
+  type   = "A"
+  content  = "172.208.35.26"
+  proxied = false
+}
 
 # resource "digitalocean_record" "pospay_record" {
-#   domain = digitalocean_domain.partners.name
+#   zone_id = var.cloudflare_zone_id
 #   name   = "voda-pospay"
 #   type   = "A"
-#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer
+#   content  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer
 # }
 #
 # resource "digitalocean_record" "blupay_record" {
@@ -54,4 +52,10 @@
 #   type   = "A"
 #   name   = "voda-egapay"
 #   value = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
+# }
+# resource "digitalocean_record" "atgh_egapay_record" {
+#   domain = digitalocean_domain.partners.name
+#   name   = "atgh-egapay"
+#   type   = "A"
+#   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer
 # }

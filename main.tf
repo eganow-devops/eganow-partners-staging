@@ -25,4 +25,5 @@ module "apis" {
   cloudflare_api_key           = var.cloudflare_api_key
   cloudflare_project_name      = var.cloudflare_project_name
   cloudflare_global_api_key    = var.cloudflare_global_api_key
+  do_token                     = var.do_token
 }
