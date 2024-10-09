@@ -22,6 +22,7 @@ terraform {
     }
   }
 }
+
 provider "cloudflare" {
   api_token = var.cloudflare_api_key
 }
@@ -52,25 +53,25 @@ module "cert_manager" {
   solvers = [
     {
       dns01 = {
-            cloudflare = {
-              email = var.cluster_issuer_email
-              apiKeySecretRef = {
-                name = kubernetes_secret_v1.cloudflare_dns_token.metadata.0.name
-                key  = "token"
-              }
-            }
-          },
-          selector = {
-            dnsZones = [
-              var.domain_name
-            ]
+        cloudflare = {
+          email = var.cluster_issuer_email
+          apiKeySecretRef = {
+            name = kubernetes_secret_v1.cloudflare_dns_token.metadata.0.name
+            key  = "token"
           }
         }
+      },
+      selector = {
+        dnsZones = [
+          var.domain_name
         ]
-
-        providers = {
-          kubernetes = kubernetes
-          kubectl    = kubectl
-          helm       = helm
-        }
       }
+    }
+  ]
+
+  providers = {
+    kubernetes = kubernetes
+    kubectl    = kubectl
+    helm       = helm
+  }
+}

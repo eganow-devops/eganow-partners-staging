@@ -21,25 +21,6 @@
 #   type   = "A"
 #   value  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
 # }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # resource "digitalocean_record" "atgh_egapay_record" {
 #   domain = digitalocean_domain.partners.name
 #   name   = "atgh-egapay"

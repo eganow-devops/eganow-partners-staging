@@ -63,16 +63,16 @@ variable "linode_api_key" {
 #################################
 # FIREWALL VARIABLES            #
 #################################
-variable "ega_subnet_1" {
+variable "eganow_ip_1" {
   type = string
-  description = "The source address for subnet1 accessing the cluster"
-  default = "216.128.0.2"
+  description = "The source address for subnet1(vodafone) accessing the cluster"
+  default = "197.251.253.0/24"
 }
 
-variable "ega_subnet_2" {
+variable "eganow_ip_2" {
   type = string
-  description = "The source address for subnet2 accessing the cluster"
-  default = "197.251.253.48"
+  description = "The source address for subnet2(Link) accessing the cluster"
+  default = "169.155.235.0/24"
 }
 
 variable "ega_subnet_size" {
