@@ -1,16 +1,15 @@
 
 resource "cloudflare_record" "onepassword_vault" {
   zone_id = var.cloudflare_zone_id
-  name   = "vault"
+  name   = "vault.partners"
   type   = "A"
   content = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
   ttl = var.cloudflare_dns_ttl
   proxied = false
 }
-
 resource "cloudflare_record" "mtngh_mad_api_egapay" {
   zone_id = var.cloudflare_zone_id
-  name   = "mtngh-egapay"
+  name   = "mtnghegapay.partners"
   type   = "A"
   content  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
   ttl = var.cloudflare_dns_ttl
@@ -18,7 +17,7 @@ resource "cloudflare_record" "mtngh_mad_api_egapay" {
 }
 resource "cloudflare_record" "mtngh_mad_api_pospay" {
   zone_id = var.cloudflare_zone_id
-  name   = "mtngh-pospay"
+  name   = "mtnghpospay.partners"
   type   = "A"
   content  = data.kubernetes_service_v1.ingress_lb.status.0.load_balancer.0.ingress.0.ip
   ttl = var.cloudflare_dns_ttl
@@ -27,7 +26,7 @@ resource "cloudflare_record" "mtngh_mad_api_pospay" {
 
 resource "cloudflare_record" "ghipss_api_name_enquiry" {
   zone_id = var.cloudflare_zone_id
-  name   = "ghipss"
+  name   = "ghipss.partners"
   type   = "A"
   content  = "172.208.35.26"
   proxied = false
