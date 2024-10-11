@@ -1,5 +1,5 @@
 resource "helm_release" "mtn_redis" {
-  chart = "redis-ha"
+  chart = "redis"
   name  = "mtn"
   repository = "https://dandydeveloper.github.io/charts/"
   version = var.redis_ha_version

@@ -11,6 +11,6 @@ resource "linode_lke_cluster" "partners_cluster" {
       min = 1
       max = 3
     }
-    count = 1
+    count = 2
   }
 }

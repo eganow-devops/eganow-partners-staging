@@ -38,6 +38,16 @@
             container_port = 443
             name           = "grpc"
           }
+             resources {
+            requests = {
+              cpu    = "100m"
+              memory = "128Mi"
+            }
+            limits = {
+              cpu    = "200m"
+              memory = "256Mi"
+            }
+          }
         }
       }
     }
@@ -121,6 +131,16 @@ resource "kubernetes_deployment_v1" "mtn_gh_mad_api_egapay" {
             container_port = 443
             name           = "grpc"
           }
+          resources {
+            requests = {
+              cpu    = "100m"
+              memory = "128Mi"
+            }
+            limits = {
+              cpu    = "200m"
+              memory = "256Mi"
+            }
+          }
         }
       }
     }
@@ -203,6 +223,16 @@ resource "kubernetes_deployment_v1" "mtn_gh_mad_api_pospay" {
           port {
             container_port = 443
             name           = "grpc"
+          }
+          resources {
+            requests = {
+              cpu    = "100m"
+              memory = "128Mi"
+            }
+            limits = {
+              cpu    = "200m"
+              memory = "256Mi"
+            }
           }
         }
       }
