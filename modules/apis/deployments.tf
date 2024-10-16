@@ -103,7 +103,7 @@ resource "kubernetes_deployment_v1" "mtn_gh_mad_api_egapay" {
           }
           env {
             name  = "ENV"
-            value = "production"
+            value = "staging"
           }
           env {
             name  = "TRANSACTION_CALLBACK_URL"
@@ -196,7 +196,7 @@ resource "kubernetes_deployment_v1" "mtn_gh_mad_api_pospay" {
           }
           env {
             name  = "ENV"
-            value = "production"
+            value = "staging"
           }
           env {
             name  = "TRANSACTION_CALLBACK_URL"

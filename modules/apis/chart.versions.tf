@@ -7,7 +7,7 @@ variable "nginx_ingress_version" {
 variable "redis_ha_version" {
   description = "The version of Redis HA chart"
   type = string
-  default = "4.27.1"
+  default = "20.2.0"
 }
 
 variable "onepassword_connect_version" {

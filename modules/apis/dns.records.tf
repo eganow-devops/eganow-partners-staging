@@ -24,13 +24,13 @@ resource "cloudflare_record" "mtngh_mad_api_pospay" {
   proxied = false
 }
 
-resource "cloudflare_record" "ghipss_api_name_enquiry" {
-  zone_id = var.cloudflare_zone_id
-  name   = "ghipss.partners"
-  type   = "A"
-  content  = "172.208.35.26"
-  proxied = false
-}
+# resource "cloudflare_record" "ghipss_api_name_enquiry" {
+#   zone_id = var.cloudflare_zone_id
+#   name   = "ghipss.partners"
+#   type   = "A"
+#   content  = "172.208.35.26"
+#   proxied = false
+# }
 
 # resource "digitalocean_record" "pospay_record" {
 #   zone_id = var.cloudflare_zone_id
